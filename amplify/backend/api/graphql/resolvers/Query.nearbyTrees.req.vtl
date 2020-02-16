@@ -1,0 +1,39 @@
+#set( $indexPath = "/tree/_doc/_search" )
+#set( $input = $ctx.args.input)
+#set( $distance = $util.defaultIfNull($input.km, 10) )
+#set( $creds = "")
+{
+  "version": "2018-05-29",
+  "method": "POST",
+  "resourcePath": "$indexPath",
+  "params": {
+    "headers" : {
+      "Content-Type" : "application/json",
+      "Authorization":"Basic $util.base64Encode($creds)"
+    },
+    "body": {
+      "size": #if( $input.limit ) $input.limit #else 100 #end,
+      "sort": [{
+        "_geo_distance": {
+          "location": $util.toJson($input.location),
+          "order": "asc",
+          "unit": "km", 
+          "distance_type": "plane" 
+        }
+      }],
+      "query": {
+        "bool" : {
+          "must" : {
+              "match_all" : {}
+          },
+          "filter" : {
+            "geo_distance" : {
+                "distance" : "${distance}km",
+                "location" : $util.toJson($input.location)
+            }
+          }
+        }
+      }
+    }
+  }
+}

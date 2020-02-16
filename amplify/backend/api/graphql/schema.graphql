@@ -1,0 +1,34 @@
+type Tree @model {
+	id: ID!
+	species: String!
+	location: Location!
+	height: Float
+}
+
+type Location {
+	lat: Float!
+	lon: Float!
+}
+
+input LocationInput {
+  lat: Float!
+  lon: Float!
+}
+input NearbyTreesInput {
+  location: LocationInput!
+  km: Int
+  limit: Int
+}
+
+type Query {
+  nearbyTrees(input: NearbyTreesInput!): NearbyTreesConnection!
+}
+
+type NearbyTreesConnection {
+	items: [NearbyTreeConnectionItem!]!
+}
+
+type NearbyTreeConnectionItem {
+	tree: Tree!
+	distance: Float!
+}

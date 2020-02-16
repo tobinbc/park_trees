@@ -1,0 +1,20 @@
+{
+    "medium": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-parktrees-medium-154612-authRole",
+            "UnauthRoleArn": "arn:aws:iam::818304461904:role/amplify-parktrees-medium-154612-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::818304461904:role/amplify-parktrees-medium-154612-authRole",
+            "Region": "eu-west-2",
+            "DeploymentBucketName": "amplify-parktrees-medium-154612-deployment",
+            "UnauthRoleName": "amplify-parktrees-medium-154612-unauthRole",
+            "StackName": "amplify-parktrees-medium-154612",
+            "StackId": "arn:aws:cloudformation:eu-west-2:818304461904:stack/amplify-parktrees-medium-154612/0700f620-500a-11ea-83d7-06452e71541c",
+            "AmplifyAppId": "d3tisw9ti1efm3"
+        },
+        "categories": {
+            "auth": {
+                "parktrees36c90b1a": {}
+            }
+        }
+    }
+}

@@ -1,0 +1,15 @@
+#set( $es_items = [] )
+#set( $body = $util.parseJson($context.result.body))
+#foreach( $entry in $body.hits.hits )
+  #set ( $item = {
+    "tree": $entry.get("_source"),
+    "distance": $entry.get("sort").get(0)
+  })
+  $util.qr($es_items.add($item))
+#end
+
+#set( $es_response = {
+  "items": $es_items
+} )
+
+$util.toJson($es_response)
